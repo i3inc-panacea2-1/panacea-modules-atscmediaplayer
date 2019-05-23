@@ -1,0 +1,19 @@
+﻿<UserControl x:Class="Panacea.Modules.AtscMediaPlayer.AtscMediaPlayerControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:forms="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
+             xmlns:mediaPlayers="clr-namespace:Panacea.Modules.AtscMediaPlayer"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+      <WindowsFormsHost>
+            <forms:PictureBox x:Name="pictureBox" BorderStyle="None">
+                <forms:PictureBox.Controls>
+                    <mediaPlayers:AtscMediaPlayerFormsControl x:Name="video"/>
+                </forms:PictureBox.Controls>
+            </forms:PictureBox>
+        </WindowsFormsHost>      
+    </Grid>
+</UserControl>
