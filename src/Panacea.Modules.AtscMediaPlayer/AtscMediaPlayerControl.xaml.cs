@@ -41,7 +41,7 @@ namespace Panacea.Modules.AtscMediaPlayer
         public event EventHandler<float> PositionChanged;
         public event EventHandler<bool> HasNextChanged;
         public event EventHandler<bool> HasPreviousChanged;
-        public event EventHandler IsPausableChanged;
+        public event EventHandler<bool> IsPausableChanged;
         public event EventHandler<TimeSpan> DurationChanged;
         public event EventHandler<bool> HasSubtitlesChanged;
         public event EventHandler Opening;
