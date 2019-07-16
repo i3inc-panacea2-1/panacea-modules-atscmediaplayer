@@ -36,6 +36,7 @@ namespace Panacea.Modules.AtscMediaPlayer
             video.axMSVidCtl1.ClickEvent += (sender, args) => Click?.Invoke(this, null);           
         }
 
+
         public event EventHandler Click;
         public event EventHandler<bool> IsSeekableChanged;
         public event EventHandler<float> PositionChanged;
