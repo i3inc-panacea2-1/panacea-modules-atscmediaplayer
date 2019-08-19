@@ -27,7 +27,7 @@ namespace Panacea.Modules.AtscMediaPlayer
     /// <summary>
     /// Interaction logic for AtscMediaPlayer.xaml
     /// </summary>
-    public partial class AtscMediaPlayerControl : System.Windows.Controls.UserControl, IMediaPlayerPlugin
+    public partial class AtscMediaPlayerControl : System.Windows.Controls.UserControl, IMediaPlayerPlugin,IMediaPlayer
     {
         public AtscMediaPlayerControl()
         {
@@ -53,7 +53,7 @@ namespace Panacea.Modules.AtscMediaPlayer
         public event EventHandler Ended;
         public event EventHandler<Exception> Error;
 
-        public bool CanPlayChannel(object item)
+        public bool CanPlayChannel(MediaItem item)
         {
             return item is AtscMedia;
         }
@@ -86,9 +86,9 @@ namespace Panacea.Modules.AtscMediaPlayer
             get { return false; }
         }
 
-        public void Play(MediaItem channel)
+        public Task Play(MediaItem channel)
         {
-            if (!(channel is AtscMedia)) return;
+            if (!(channel is AtscMedia)) return Task.CompletedTask;
             var atsc = channel as AtscMedia;
             var tuningSpaces2 = new SystemTuningSpaces();
             var tuningSpaces = (ITuningSpaceContainer)new SystemTuningSpaces();
@@ -112,6 +112,7 @@ namespace Panacea.Modules.AtscMediaPlayer
             video.axMSVidCtl1.View(ref objTuneRequest);
             video.axMSVidCtl1.Run();
             Playing?.Invoke(this, null);
+            return Task.CompletedTask;
         }
 
         public void Play()
@@ -205,5 +206,7 @@ namespace Panacea.Modules.AtscMediaPlayer
         {
             
         }
+
+        public IMediaPlayer GetMediaPlayer() => this;
     }
 }
